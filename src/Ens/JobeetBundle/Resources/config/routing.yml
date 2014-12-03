@@ -1,6 +1,6 @@
 ens_jobeet_homepage:
-    path:     /hello/{name}
-    defaults: { _controller: EnsJobeetBundle:Default:index }
+    path:     /
+    defaults: { _controller: EnsJobeetBundle:Job:index }
 
 EnsJobeetBundle_ens_job:
     resource: "@EnsJobeetBundle/Resources/config/routing/job.yml"
