@@ -3,7 +3,7 @@ ens_job:
     defaults: { _controller: "EnsJobeetBundle:Job:index" }
 
 ens_job_show:
-    path:     /job/{comapny}/{location}/{id}/{position}
+    path:     /job/{company}/{location}/{id}/{position}
     defaults: { _controller: "EnsJobeetBundle:Job:show" }
     requirements:
         id: \d+
