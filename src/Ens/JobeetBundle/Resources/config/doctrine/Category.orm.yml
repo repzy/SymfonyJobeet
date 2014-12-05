@@ -12,6 +12,10 @@ Ens\JobeetBundle\Entity\Category:
             type: string
             length: 255
             unique: true
+        slug:
+            type: string
+            length: 255
+            unique: true
     oneToMany:
         jobs:
             targetEntity: Job
@@ -20,3 +24,5 @@ Ens\JobeetBundle\Entity\Category:
         affiliates:
             targetEntity: Affiliate
             mappedBy: Category
+    lifecycleCallbacks:
+        prePersist: [ setSlugValue ]

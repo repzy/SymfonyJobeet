@@ -1,0 +1,12 @@
+{% extends 'EnsJobeetBundle::layout.html.twig' %}
+
+{% block content %}
+    {# {% for category in categories %}
+        {% for job in category.jobs %}
+            {{ dump(job.position) }}
+        {% endfor %}
+    {% endfor %} #}
+
+    {{ dump(categories) }}
+
+{% endblock %}
