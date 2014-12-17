@@ -19,12 +19,12 @@ class JobRepository extends EntityRepository
             ->setParameter('date', date('Y-m-d H:i:s', time()))
             ->orderBy('j.expires_at', 'DESC');
 
-        if($max)
+        if(null == $max)
         {
             $qb->setMaxResults($max);
         }
 
-        if($offset)
+        if(null == $offset)
         {
             $qb->setFirstResult($offset);
         }

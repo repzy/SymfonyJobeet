@@ -6,11 +6,7 @@ EnsJobeetBundle_ens_job:
     resource: "@EnsJobeetBundle/Resources/config/routing/job.yml"
     prefix:   /job
 
-EnsJobeetBundle_ens_job:
-    path: /category/{slug}
-    defaults: { _controller: EnsJobeetBundle:Category:show }
-
-EnsJobeetBundle_ens_job:
+EnsJobeetBundle_ens_job_test:
     path: /test
     defaults: { _controller: EnsJobeetBundle:Test:index }
 
