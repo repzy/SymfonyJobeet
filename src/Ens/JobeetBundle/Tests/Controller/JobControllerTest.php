@@ -12,5 +12,6 @@ use Doctrine\Bundle\DoctrineBundle\Command\Proxy\CreateSchemaDoctrineCommand;
 
 class JobControllerTest extends WebTestCase
 {
-    
+    private $em;
+    private $application;
 }
