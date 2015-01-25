@@ -68,11 +68,61 @@ class CategoryControllerTest extends WebTestCase {
 
     public function tetsShow()
     {
+        $kernel = static::createKernel();
+        $kernel->boot();
+
+        //get the custom parameters from app/config.yml
+        $max_jobs_on_category = $kernel->getContainer()->getParameter('max_jobs_on_category');
+        $max_jobs_on_homepage = $kernel->getContainer()->getParameter('max_jobs_on_homepage');
+
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/category/index');
-        $this->assertEquals('Ens\JobeetBundle\Controller\CategoryController::showAction', $client->getRequest()->attributes->get('_controller'));
-        $this->assertTrue(200 === $client->getResponse()->getStatusCode());
+        $categories = $this->em->getRepository('EnsJobeetBundle:Category')->getWithJobs();
 
+        //categories on homepage are clickable
+        foreach($categories as $category) {
+            $crawler = $client->request('GET', '/');
+
+            $link = $crawler->selectLink($category->getName()->link());
+            $crawler = $client->click($link);
+
+            $this->assertEquals('Ens\JobeetBundle\Controller\CategoryController::showAction', $client->getRequest()->attributes->get('_controller'));
+            $this->assertEquals($category->getSlug(), $client->getRequest()->attributes->get('slug'));
+
+            $jobs_no = $this->em->getRepository('EnsJobeetBundle:Job')->countActiveJobs($category->getId());
+
+            //categories with more than $max_jobs_on_homepage jobs also have a "more" link
+            if($jobs_no > $max_jobs_on_homepage) {
+                $crawler = $client->request('GET', "/");
+                $link = $crawler->filter(".category_" . $category->getSlug() . ".more_jobs a")->link();
+                $crawler = $client->click($link);
+
+                $this->assertEquals('Ens\JobeetBundle\Caontroller\CategorController::showAction', $client->getRequest()->attributes->get('_controller'));
+                $this->assertEquals($category->getSlug(), $client->getRequest()->attributes->get('slug'));
+            }
+
+            $pages = ceil($jobs_no/$max_jobs_on_category);
+
+            //only $max_job_on_category jobs are listed
+            $this->assertTrue($crawler->filter('.jobs_tr')->count() <= $max_jobs_on_category);
+            $this->assertRegExp("/". $jobs_no . " jobs/", $crawler->filter('.pagination_desc')->text());
+
+            if($pages > 1) {
+                $this->assertRegExp("/page 1\/". $pages . "/", $crawler->filter('.pagination_desc')->text());
+
+                for($i = 2; $i <= $pages; $i++) {
+                    $link = $crawler->selectLink($i)->link();
+                    $crawler = $client->click($link);
+
+                    $this->assertEquals('Ens\JobeetBundle\Controller\CategoryController::showAction', $client->getRequest()->attributes->get('_controller'));
+                    $this->assertEquals($i, $client->getRequest()->attributes->get('page'));
+                    $this->assertTrue($crawler->filter('.jobs tr')->count() <= $max_jobs_on_category);
+                    if($jobs_no > 1) {
+                        $this->assertRegExp("/". $jobs_no . " jobs/", $crawler->filter('.pagination_desc')->text());
+                    }
+                    $this->assertRegExp("/page " . $i . "\/" . $pages . "/", $crawler->filter('.pagination_desc')->text());
+                }
+            }
+        }
     }
 }
