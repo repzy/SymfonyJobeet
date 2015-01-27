@@ -11,6 +11,10 @@
 
 {% block content %}
 
+    {% if app.request.get('token') %}
+        {% include 'EnsJobeetBundle:Job:admin.html.twig' with {'job': entity} %}
+    {% endif %}
+
     <h1>{{ entity.company }}</h1>
     <h2>{{ entity.location }}</h2>
     <h3>
@@ -39,10 +43,5 @@
         <small>posted on {{ entity.createdat|date('m/d/Y') }}</small>
     </div>
 
-    <div style="padding: 20px 0">
-        <a href="{{ path('ens_job_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </div>
     </div>
 {% endblock %}

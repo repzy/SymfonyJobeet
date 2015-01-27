@@ -18,7 +18,7 @@ class JobType extends AbstractType
         $builder
             ->add('type', 'choice', array('choices' =>  Job::getTypes(), 'expanded' => true ))
             ->add('company')
-            ->add('logo', null, array('label' => 'Company logo'))
+            ->add('file', 'file', array('label' => 'Company logo', 'required' => false))
             ->add('url')
             ->add('position')
             ->add('location')

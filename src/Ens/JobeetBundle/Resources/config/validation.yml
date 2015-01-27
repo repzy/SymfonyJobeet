@@ -18,7 +18,7 @@ Ens\JobeetBundle\Entity\Job:
             - Not Blank: ~
         how_to_apply:
             - Not Blank: ~
-        token:
-            - Not Blank: ~
         url:
-          - Url: ~
+            - Url: ~
+        file:
+            - Image: ~
