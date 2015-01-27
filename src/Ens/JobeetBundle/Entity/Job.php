@@ -506,6 +506,16 @@ class Job
         return Jobeet::slugify($this->getLocation());
     }
 
+    public static function getTypes()
+    {
+        return array('full-time' => 'Full time', 'part-time' => 'Part time', 'freelance' => 'Freelance');
+    }
+
+    public static function getTypeValue()
+    {
+        return array(self::getTypes());
+    }
+
     /**
      * @ORM\PrePersist
      */
