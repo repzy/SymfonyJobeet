@@ -10,7 +10,7 @@ ens_job_show:
 
 ens_job_preview:
     pattern: /{company}/{location}/{token}/{position}
-    defaults: { _controller: "EnsJobbetBundle:Job:preview" }
+    defaults: { _controller: "EnsJobeetBundle:Job:preview" }
     requirements:
         token: \w+
 
@@ -42,5 +42,8 @@ ens_job_delete:
     defaults: { _controller: "EnsJobeetBundle:Job:delete" }
     requirements: { _method: post|delete }
 
-
+ens_job_extend:
+    pattern: /{token}/extend
+    defaults: { _controller: "EnsJobeetBundle:Job:extend" }
+    requirements: { _method: post }
 

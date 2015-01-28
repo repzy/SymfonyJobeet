@@ -558,6 +558,18 @@ class Job
         $this->setIsActivated(true);
     }
 
+    public function extend()
+    {
+        if(!$this->expiresSoon())
+        {
+            return false;
+        }
+
+        $this->expires_at = new \DateTime(date('Y-m-d H:i:s', time() + 86400 * 30));
+
+        return true;
+    }
+
     /**
      * @ORM\PrePersist
      */
@@ -612,7 +624,7 @@ class Job
     /**
      * @ORM\PrePersist
      */
-    public function setTokenvalue()
+    public function setTokenValue()
     {
         if(!$this->getToken()) {
             $this->token = sha1($this->getEmail().rand(11111, 99999));

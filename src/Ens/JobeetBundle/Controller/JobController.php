@@ -34,6 +34,7 @@ class JobController extends Controller
             'categories' => $categories,
         ));
     }
+
     /**
      * Creates a new Job entity.
      *
@@ -118,11 +119,13 @@ class JobController extends Controller
 
         $deleteForm = $this->createDeleteForm($entity->getToken());
         $publishForm = $this->createPublishForm($entity->getToken());
+        $extendForm = $this->createExtendForm($entity->getToken());
 
         return $this->render('EnsJobeetBundle:Job:show.html.twig', array(
             'entity' => $entity,
             'delete_form' => $deleteForm->createView(),
-            'publish_form' => $publishForm->createView()
+            'publish_form' => $publishForm->createView(),
+            'extend_form' => $extendForm->createView()
         ));
     }
 
@@ -168,8 +171,12 @@ class JobController extends Controller
 
         $entity = $em->getRepository('EnsJobeetBundle:Job')->findOneByToken($token);
 
-        if (!$entity) {
+        if(!$entity) {
             throw $this->createNotFoundException('Unable to find Job entity.');
+        }
+
+        if($entity->getIsActivated()) {
+            throw $this->createNotFoundException('Job is activated and cannot be edited.');
         }
 
         $editForm = $this->createEditForm($entity);
@@ -212,6 +219,7 @@ class JobController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a Job entity.
      *
@@ -234,6 +242,43 @@ class JobController extends Controller
         }
 
         return $this->redirect($this->generateUrl('ens_job'));
+    }
+
+    /**
+     * Extends active time of a Job entity.
+     *
+     */
+    public function extendAction(Request $request, $token)
+    {
+        $form = $this->createExtendForm($token);
+        $request = $this->getRequest();
+
+        $form->bind($request);
+
+        if($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $entity = $em->getRepository('EnsJobeetBundle:Job')->findByToken($token);
+
+            if(!$entity) {
+                throw $this->createNotFoundException('Unable to find Job entity');
+            }
+
+            if($entity->extend()) {
+                throw $this->createNotFoundException('Unable to extend the Job');
+            }
+
+            $em->persist($entity);
+            $em->flush();
+
+            $this->get('session')->getFlashBag()->add('notice', sprintf('Your job validity has been extended until %s', $entity->getExpiresAt()->format('m/d/Y')));
+        }
+
+        return $this->redirect($this->generateUrl('ens_job_preview', array(
+            'company' => $entity->getCompanySlug(),
+            'location' => $entity->getLocationSlug(),
+            'token' => $entity->getToken(),
+            'position' => $entity->getPositionSlug(),
+        )));
     }
 
     /**
@@ -304,5 +349,19 @@ class JobController extends Controller
             ->add('token', 'hidden')
             ->getForm()
         ;
+    }
+
+    /**
+     * Creates a form to extend active time a Job entity by token.
+     *
+     * @param mixed $token The entity token
+     *
+     * @return \Symfony\Component\Form\Form The form
+     */
+    private function createExtendForm($token)
+    {
+        return $this->createFormBuilder(array('token' => $token))
+            ->add('token', 'hidden')
+            ->getForm();
     }
 }
