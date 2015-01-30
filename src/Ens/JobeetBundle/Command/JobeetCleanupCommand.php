@@ -8,7 +8,7 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Ens\JobeetBundle\Entity\Job;
 
-class JobeetCleanuoCommand {
+class JobeetCleanupCommand {
 
     protected function configure()
     {
