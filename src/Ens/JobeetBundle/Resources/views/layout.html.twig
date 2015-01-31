@@ -17,6 +17,21 @@
 <body>
 <div id="container">
     <div id="header">
+        {% if app.session.hasFlash('notice') %}
+            <div>
+                {{ app.session.flash('notice') }}
+            </div>
+        {% endif %}
+        <div id="job_history">
+            Recent viewed jobs:
+            <ul>
+                {% for job in app.session.get('job_history') %}
+                    <li>
+                        <a href="{{ path('ens_job_show', { 'id': job.id, 'company': job.companyslug, 'location': job.locationslug, 'position': job.positionslug }) }}">{{ job.position }} - {{ job.company }}</a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
         <div class="content">
             <h1><a href="{{ path('ens_job') }}">
                     <img src="{{ asset('bundles/ensjobeet/images/logo.jpg') }}" alt="Jobeet Job Board" />
