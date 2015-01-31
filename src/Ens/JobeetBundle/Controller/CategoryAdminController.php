@@ -1,5 +1,5 @@
 <?php
-namespace Ens\JobbetBundle\Controller;
+namespace Ens\JobeetBundle\Controller;
 
 use Sonata\AdminBundle\Controller\CRUDController as Controller;
 

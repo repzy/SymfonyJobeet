@@ -13,7 +13,7 @@ class JobeetCleanupCommand {
     protected function configure()
     {
         $this
-            ->setName('ens.jobbet.cleanup')
+            ->setName('ens:joebet:cleanup')
             ->setDescription('Cleanup Jobeet database')
             ->addArgument('days', InputArgument::OPTIONAL, 'The eamil', 90)
         ;

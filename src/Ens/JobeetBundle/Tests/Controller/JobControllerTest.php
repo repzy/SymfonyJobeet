@@ -106,7 +106,7 @@ class JobControllerTest extends WebTestCase
         $client = static::createClient();
 
         $crawler = $client->request('GET', '/');
-        $this->assertEquals('Ens\JobbetBundle\Controller\JobController::indexAction', $client->getRequest()->attributes->get('_controller'));
+        $this->assertEquals('Ens\JobeetBundle\Controller\JobController::indexAction', $client->getRequest()->attributes->get('_controller'));
 
         //expired jobs not listed
         $this->assertTrue($crawler->filter('.jobs td.position:contains("Expired")')->count() == 0 );
