@@ -37,6 +37,14 @@ class JobRepository extends EntityRepository
                 ->setParameter('category_id', $category_id);
         }
 
+        if ($affiliate_id) {
+            $qb->leftJoin('j.category', 'c')
+                ->leftJoin('c.affiliates', 'a')
+                ->andWhere('a.id = :affiliate_id')
+                ->setParameter('affiliate_id', $affiliate_id)
+            ;
+        }
+
         $query = $qb->getQuery();
 
         return $query->getResult();

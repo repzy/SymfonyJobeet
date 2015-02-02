@@ -32,7 +32,7 @@ class JobController extends Controller
 
         $format = $this->getRequest()->getRequestFormat();
         $lastUpdated = $em->getRepository('EnsJobeetBundle:Job')->getLatestPost()->getCreatedAt()->format('DATE_ATOM');
-        $feedId = shal($this->get('router')->generate('ens_job', array('_format' => 'atom'), true));
+        $feedId = sha1($this->get('router')->generate('ens_job', array('_format' => 'atom'), true));
 
         return $this->render('EnsJobeetBundle:Job:index.'.$format.'.twig', array(
             'categories' => $categories,

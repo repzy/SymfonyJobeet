@@ -23,3 +23,9 @@ login_check:
 
 logout:
     pattern: /logout
+
+EnsJobeetBundle_api:
+    pattern: /api/{token}/jobs.{format}
+    defaults: {_controller: "EnsJobeetBundle:Api:list"}
+    requirements:
+        _format: xml|json|yaml
