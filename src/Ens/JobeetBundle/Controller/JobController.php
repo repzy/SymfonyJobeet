@@ -30,8 +30,14 @@ class JobController extends Controller
             $category->setMoreJobs($em->getRepository('EnsJobeetBundle:Job')->countActiveJobs($category->getId()) - $this->container->getParameter('max_jobs_on_homepage'));
         }
 
-        return $this->render('EnsJobeetBundle:Job:index.html.twig', array(
+        $format = $this->getRequest()->getRequestFormat();
+        $lastUpdated = $em->getRepository('EnsJobeetBundle:Job')->getLatestPost()->getCreatedAt()->format('DATE_ATOM');
+        $feedId = shal($this->get('router')->generate('ens_job', array('_format' => 'atom'), true));
+
+        return $this->render('EnsJobeetBundle:Job:index.'.$format.'.twig', array(
             'categories' => $categories,
+            'lastUpdated' => $lastUpdated,
+            'feedId' => $feedId,
         ));
     }
 
