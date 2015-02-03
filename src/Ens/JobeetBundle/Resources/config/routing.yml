@@ -29,3 +29,7 @@ EnsJobeetBundle_api:
     defaults: {_controller: "EnsJobeetBundle:Api:list"}
     requirements:
         _format: xml|json|yaml
+
+EnsJobeetBundle_ens_affiliate:
+    resource: "@EnsJobeetBundle/Resources/config/routing/affiliate.yml"
+    prefix: /affiliate
