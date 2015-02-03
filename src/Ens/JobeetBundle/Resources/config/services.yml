@@ -22,3 +22,11 @@ services:
             - ~
             - Ens\JobeetBundle\Entity\Job
             - 'EnsJobeetBundle:JobAdmin'
+    ens.jobeet.admin.affiliate:
+        class: Ens\JobeetBundle\Admin\AffiliateAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: jobeet, label: Affiliate }
+        arguments:
+            - ~
+            - Ens\JobeetBundle\Entity\Affiliate
+            - 'EnsJobeetBundle:AffiliateAdmin'

@@ -42,7 +42,7 @@ class JobAdminController extends Controller
     public function batchActionDeleteNeverActivated()
     {
         if($this->admin->isGranted('EDIT') === false || $this->admin->isGranted('DELETE') === false) {
-            throw new AccessDeniedException;
+            throw new AccessDeniedException();
         }
 
         $em = $this->getDoctrine()->getManager();

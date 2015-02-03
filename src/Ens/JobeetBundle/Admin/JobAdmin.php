@@ -36,7 +36,7 @@ class JobAdmin extends Admin
     }
 
 
-    protected function configureDataGridFields(DatagridMapper $datagridMapper)
+    protected function configureDataGridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
             ->add('category')
