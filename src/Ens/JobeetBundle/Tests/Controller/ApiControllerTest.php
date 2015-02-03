@@ -71,4 +71,38 @@ class ApiControllerTest extends WebTestCase
         $executor->execute($loader->getFixtures());
     }
 
+    public function testList()
+    {
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/api/sensio-labs/jobs.xml');
+
+        $this->assertEquals('Ens\JobeetBundle\Controller\ApiController:listAction', $client->getRequest()->attributes->get('_controller'));
+        $this->assertTrue($crawler->filter('description')->count() == 32);
+
+        $crawler = $client->request('GET', '/api/sensio-labs87/jobs.xml');
+
+        $this->assertTrue(404 == $client->getResponse()->getStatusCode());
+
+        $crawler = $client->request('GET', '/api/symfony/jobs.xml');
+
+        $this->assertTrue(404 == $client->getResponse()->getStatusCode());
+
+        $crawler = $client->request('GET', '/api/symfony/jobs.json');
+
+        $this->assertEquals('Ens\JobeetBundle\Controller:listAction', $client->getRequest()->attributes->get('_controller'));
+        $this->assertRegExp('/"category"\:"Programming"/', $client->getResponse()->getContent());
+
+        $crawler = $client->request('GET', '/api/sensio-labs87/jobs.json');
+
+        $this->assertTrue(404 == $client->getResponse()->getStatusCode());
+
+        $crawler = $client->request('GET', '/api/sensio-labs/jobs.yaml');
+        $this->assertRegExp('/"category"\:"Programming"/', $client->getResponse()->getContent());
+
+        $this->assertEquals('Ens\JobeetBundle\Controller:listAction', $client->getRequest()->attributes->get('_controller'));
+
+        $crawler = $client->request('GET', '/api/sensio-labs87/jobs.yaml');
+
+        $this->assertTrue(404 == $client->getResponse()->getStatusCode());
+    }
 }
