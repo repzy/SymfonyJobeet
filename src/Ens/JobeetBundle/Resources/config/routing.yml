@@ -46,6 +46,6 @@ EnsJobeetBundle_ens_affiliate:
     requirements:
         _locale: uk|ru|en
 
-EnsJoneetBundle_changeLanguage:
+EnsJobeetBundle_changeLanguage:
     pattern: /change_language
-    defaults: { _controller: "EnsJobeetBundle:Default:cahangeLanguage" }
+    defaults: { _controller: "EnsJobeetBundle:Default:changeLanguage" }

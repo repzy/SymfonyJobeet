@@ -247,4 +247,42 @@ class Affiliate
 
         return $this->is_active;
     }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $category_affiliates;
+
+
+    /**
+     * Add category_affiliates
+     *
+     * @param \Ens\JobeetBundle\Entity\CategoryAffiliate $categoryAffiliates
+     * @return Affiliate
+     */
+    public function addCategoryAffiliate(\Ens\JobeetBundle\Entity\CategoryAffiliate $categoryAffiliates)
+    {
+        $this->category_affiliates[] = $categoryAffiliates;
+
+        return $this;
+    }
+
+    /**
+     * Remove category_affiliates
+     *
+     * @param \Ens\JobeetBundle\Entity\CategoryAffiliate $categoryAffiliates
+     */
+    public function removeCategoryAffiliate(\Ens\JobeetBundle\Entity\CategoryAffiliate $categoryAffiliates)
+    {
+        $this->category_affiliates->removeElement($categoryAffiliates);
+    }
+
+    /**
+     * Get category_affiliates
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCategoryAffiliates()
+    {
+        return $this->category_affiliates;
+    }
 }

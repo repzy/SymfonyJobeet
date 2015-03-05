@@ -16,7 +16,7 @@ class JobType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('type', 'choice', array('choices' =>  Job::getTypes(), 'expanded' => true ))
+            ->add('type', 'choice', array('choices' =>  Job::getTypes()))
             ->add('company')
             ->add('file', 'file', array('label' => 'Company logo', 'required' => false))
             ->add('url')

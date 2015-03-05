@@ -12,7 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class JobRepository extends EntityRepository
 {
-    public function getActiveJobs($category_id = null, $max = null, $offset = null)
+    public function getActiveJobs($category_id = null, $max = null, $offset = null, $affiliate_id = null)
     {
         $qb = $this->createQueryBuilder('j')
             ->where('j.expires_at > :date')

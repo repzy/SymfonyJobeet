@@ -14,14 +14,14 @@ class AffiliateType extends AbstractType
         $builder
             ->add('url')
             ->add('email')
-            ->add('categories', null, array('expanded' => true))
+            ->add('categories')
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'En\JobeetBundle\Entity\Affiliate',
+            'data_class' => 'Ens\JobeetBundle\Entity\Affiliate',
         ));
     }
 

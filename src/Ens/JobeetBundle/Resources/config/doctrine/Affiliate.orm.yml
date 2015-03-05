@@ -23,16 +23,9 @@ Ens\JobeetBundle\Entity\Affiliate:
             nullable: true
         created_at:
             type: datetime
-    manyToMany:
-            categories:
-                targetEntity: Category
-                joinTable:
-                    name: category_affiliate
-                    joinColumns:
-                        affiliate_id:
-                            refferencedColumnName: id
-                    inverseJoinColumns:
-                        category_id:
-                            refferencedColumnName: id
+    oneToMany:
+        category_affiliates:
+          targetEntity: CategoryAffiliate
+          mappedBy: affiliate
     lifecycleCallbacks:
         prePersist: [ SetCreatedAtValue, setTokenValue ]

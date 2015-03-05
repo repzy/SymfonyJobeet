@@ -17,12 +17,11 @@ Ens\JobeetBundle\Entity\Category:
             length: 255
             unique: true
     oneToMany:
-        jobs:
-            targetEntity: Job
-            mappedBy: category
-    manyToMany:
-        affiliates:
-            targetEntity: Affiliate
-            mappedBy: Category
+         jobs:
+             targetEntity: Job
+             mappedBy: category
+         category_affiliates:
+             targetEntity: CategoryAffiliate
+             mappedBy: category
     lifecycleCallbacks:
-        prePersist: [ setSlugValue ]
+         prePersist: [ setSlugValue ]

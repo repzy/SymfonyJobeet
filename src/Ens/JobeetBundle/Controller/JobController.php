@@ -85,7 +85,7 @@ class JobController extends Controller
     {
         $entity = new Job();
         $entity->setType('full-time');
-        $form   = $this->createCreateForm(new JobType(), $entity);
+        $form   = $this->createCreateForm($entity);
 
         return $this->render('EnsJobeetBundle:Job:new.html.twig', array(
             'entity' => $entity,
@@ -117,7 +117,7 @@ class JobController extends Controller
             'id' => $entity->getId(),
             'position' => $entity->getPosition(),
             'company' => $entity->getCompany(),
-            'companyslug' => $entity->getCompanySlug,
+            'companyslug' => $entity->getCompanySlug(),
             'locationslug' => $entity->getLocationSlug(),
             'positionslug' => $entity->getPositionSlug()
         );
