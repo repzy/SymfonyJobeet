@@ -21,6 +21,12 @@ class JobController extends Controller
      */
     public function indexAction()
     {
+        $request = $this->getRequest();
+
+        if($request->get('_route') == 'EnsJobeetBundle_nolocalized') {
+            return $this->redirect($this->generateUrl('ens_jobeet_homepage'));
+        }
+
         $em = $this->getDoctrine()->getManager();
 
         $categories = $em->getRepository('EnsJobeetBundle:Category')->getWithJobs();

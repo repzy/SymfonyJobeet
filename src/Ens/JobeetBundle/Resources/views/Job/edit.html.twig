@@ -20,7 +20,7 @@
 {% endblock %}
  
 {% block content %}
-    <h1>Job edit</h1>
+    <h1>{% trans %}Job edit{% endtrans %}</h1>
 <form action="{{ path('ens_job_update', { 'token': entity.token }) }}" method="post" {{ form_enctype(edit_form) }}>
     <table id="job_form">
         <tfoot>
@@ -99,7 +99,7 @@
             <td>
                 {{ form_errors(edit_form.is_public) }}
                 {{ form_widget(edit_form.is_public) }}
-                <br /> Whether the job can also be published on affiliate websites or not.
+                <br /> {% trans %}Whether the job can also be published on affiliate websites or not.{% endtrans %}
             </td>
         </tr>
         <tr>

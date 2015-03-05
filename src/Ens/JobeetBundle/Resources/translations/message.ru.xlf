@@ -1,0 +1,133 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="1">
+                <source>Jobeet - Your best job board</source>
+                <target>Jobeet - Ваш лучшая доска вакансий</target>
+            </trans-unit>
+            <trans-unit id="2">
+                <source>Enter some keywords (city, country, position, ...)</source>
+                <target>Введите ключевые слова (город, страна, должность, ...)</target>
+            </trans-unit>
+            <trans-unit id="3">
+                <source>Recent viewed jobs:</source>
+                <target>Последние просмотренные вакансии:</target>
+            </trans-unit>
+            <trans-unit id="4">
+                <source>About Jobeet</source>
+                <target>О Jobeet</target>
+            </trans-unit>
+            <trans-unit id="5">
+                <source>Become an affiliate</source>
+                <target>Станьте нашим партнером</target>
+            </trans-unit>
+            <trans-unit id="6">
+                <source>and %count% more...</source>
+                <target>еще вакансии...</target>
+            </trans-unit>
+            <trans-unit id="7">
+                <source>Language</source>
+                <target>Язык</target>
+            </trans-unit>
+            <trans-unit id="8">
+                <source>Publish</source>
+                <target>Опубликовать</target>
+            </trans-unit>
+            <trans-unit id="9">
+                <source>Edit</source>
+                <target>Редактировать</target>
+            </trans-unit>
+            <trans-unit id="10">
+                <source>Are you sure?</source>
+                <target>Вы уверены?</target>
+            </trans-unit>
+            <trans-unit id="11">
+                <source>Delete</source>
+                <target>Удалить</target>
+            </trans-unit>
+            <trans-unit id="12">
+                <source>Extend</source>
+                <target>Продлить</target>
+            </trans-unit>
+            <trans-unit id="13">
+                <source>for another 30 days</source>
+                <target>на следующие 30 дней</target>
+            </trans-unit>
+            <trans-unit id="14">
+                <source>Bookmark this %url% to manage this job in the future</source>
+                <target>Добавить в закладки % URL% для управления этой вакансией в будущем</target>
+            </trans-unit>
+            <trans-unit id="15">
+                <source>Whether the job can also be published on affiliate websites or not.</source>
+                <target>Эта вакансия также может быть размещена на сайтах-партнерах (да или нет).</target>
+            </trans-unit>
+            <trans-unit id="16">
+                <source>%company% is looking for a %position%</source>
+                <target>%company% ищет %position%</target>
+            </trans-unit>
+            <trans-unit id="17">
+                <source>How to apply?</source>
+                <target>Как применить?</target>
+            </trans-unit>
+            <trans-unit id="18">
+                <source>posted on %date%</source>
+                <target>создано %date%</target>
+            </trans-unit>
+            <trans-unit id="19">
+                <source>{0} No job in this category|{1} One job in this category|]1,Inf] %count% jobs in this category</source>
+                <target>{0} В этой категории нет вакансий|{1} 1 вакансия в этой категории|]1,+Inf] %count% вакансий в этой категории</target>
+            </trans-unit>
+            <trans-unit id="20">
+                <source>Jobs in the %category% category</source>
+                <target>Вакансии в категории %category%</target>
+            </trans-unit>
+            <trans-unit id="21">
+                <source>Your affiliate account has been created</source>
+                <target>Поздравляем! Ваш партнерский аккаунт успешно создан.</target>
+            </trans-unit>
+            <trans-unit id="22">
+                <source>Thank you!
+            You will receive an email with your affiliate token
+            as soon as your account will be activated.</source>
+                <target>Спасибо! Вы получите письмо с Вашим партнерским ключем, как только Ваш аккаунт будет активирован администратором.</target>
+            </trans-unit>
+            <trans-unit id="23">
+                <source>Expires in %count% days</source>
+                <target>Истекает через %count% дней</target>
+            </trans-unit>
+            <trans-unit id="24">
+                <source>Ask for people</source>
+                <target>Поиск людей</target>
+            </trans-unit>
+            <trans-unit id="25">
+                <source>Ask for a job</source>
+                <target>Поиск вакансий</target>
+            </trans-unit>
+            <trans-unit id="26">
+                <source>Jobeet API</source>
+                <target>API Jobeet</target>
+            </trans-unit>
+            <trans-unit id="27">
+                <source>Job creation</source>
+                <target>Создание вакансии</target>
+            </trans-unit>
+            <trans-unit id="28">
+                <source>Job edit</source>
+                <target>Редактирование вакансии</target>
+            </trans-unit>
+            <trans-unit id="29">
+                <source>Expired</source>
+                <target>Истекшие</target>
+            </trans-unit>
+            <trans-unit id="30">
+                <source>Full feed</source>
+                <target>Полный RSS</target>
+            </trans-unit>
+            <trans-unit id="31">
+                <source>Post a Job</source>
+                <target>Создать вакансию</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

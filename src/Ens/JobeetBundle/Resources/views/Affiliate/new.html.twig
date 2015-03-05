@@ -20,7 +20,7 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Become an affiliate</h1>
+    <h1>{% trans %}Become an affiliate{% endtrans %}</h1>
 <form action="{{ path('ens_affiliate_create') }}" method="post" {{ form_enctype(form) }}>
     <table id="job_form">
         <tfoot>

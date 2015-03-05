@@ -1,18 +1,28 @@
 ens_jobeet_homepage:
-    resource: "@EnsJobeetBundle/Resources/config/routing/job.yml"
-    prefix:   /
+    pattern:  /{_locale}/
+    defaults: { _controller: EnsJobeetBundle:Job:index }
+    requirements:
+        _locale: uk|ru|en
+
+EnsJobeetBundle_nolocalized:
+    pattern: /
+    defaults: { _controller: "EnsJobeetBundle:Job:index" }
 
 EnsJobeetBundle_ens_job:
     resource: "@EnsJobeetBundle/Resources/config/routing/job.yml"
-    prefix:   /job
+    prefix:   /{_locale}/job
+    requirements:
+        _locale: uk|ru|en
 
 EnsJobeetBundle_ens_job_test:
     path: /test
     defaults: { _controller: EnsJobeetBundle:Test:index }
 
 EnsJobeetBundle_category:
-    pattern:  /category/{slug}
+    pattern:  /{_locale}/category/{slug}
     defaults: { _controller: EnsJobeetBundle:Category:show, page: 1 }
+    requirements:
+        _locale: uk|ru|en
 
 login:
     pattern: /login
@@ -32,4 +42,10 @@ EnsJobeetBundle_api:
 
 EnsJobeetBundle_ens_affiliate:
     resource: "@EnsJobeetBundle/Resources/config/routing/affiliate.yml"
-    prefix: /affiliate
+    prefix: /{_locale}/affiliate
+    requirements:
+        _locale: uk|ru|en
+
+EnsJoneetBundle_changeLanguage:
+    pattern: /change_language
+    defaults: { _controller: "EnsJobeetBundle:Default:cahangeLanguage" }

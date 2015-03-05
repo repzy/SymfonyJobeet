@@ -105,7 +105,14 @@ class JobControllerTest extends WebTestCase
 
         $client = static::createClient();
 
-        $crawler = $client->request('GET', '/');
+        $crawler = $client->request('GET', '/fr/');
+        $this->assertEquals('Ens\JobeetBundle\Controller\JobController::indexAction', $client->getRequest()->attributes->get('_controller'));
+
+        //If the selected culture is italian, the page requested will not be found
+        $crawler = $client->request('GET', '/it/');
+        $this->asserttrue(404 == $client->getResponse()->getStatusCode());
+
+        $crawler = $client->request('GET', '/uk/');
         $this->assertEquals('Ens\JobeetBundle\Controller\JobController::indexAction', $client->getRequest()->attributes->get('_controller'));
 
         //expired jobs not listed
@@ -141,7 +148,7 @@ class JobControllerTest extends WebTestCase
     public function createJob($values = array(), $publish = false)
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/job/new');
+        $crawler = $client->request('GET', '/uk/job/new');
         $form = $crawler->selectButton('Preview your job')->form(array(
             'job[company]' => 'Sensio Labs',
             'job[url]' => 'http://www.sensio.com',
@@ -183,7 +190,7 @@ class JobControllerTest extends WebTestCase
     public function testJobForm()
     {
         $client = static::createClient();
-        $crawler =  $client->request('GET', '/job/new');
+        $crawler =  $client->request('GET', '/uk/job/new');
         $this->assertEquals('Ens\JobeetBundle\Controller\JobController:newAction', $client->getRequest()->attributes->get('_controller'));
         $form = $crawler->selectButton('Preview your job')->form(array(
             'job[company]' => 'Sensio Labs',
@@ -210,7 +217,7 @@ class JobControllerTest extends WebTestCase
         $query->setParameter('location', 'Atlanta, USA');
         $this->assertTrue(0 < $query->getSingleScalarResult());
 
-        $crawler = $client->request('GET', '/job/new');
+        $crawler = $client->request('GET', '/uk/job/new');
         $form = $crawler->selectButton('Preview your job')->form(array(
             'job[company]' => 'Sensio Labs',
             'job[position]' => 'Developer',
@@ -265,7 +272,7 @@ class JobControllerTest extends WebTestCase
     {
         $client = $this->createJob(array('job[position]' => 'F003'), true);
         $crawler = $client->getCrawler();
-        $crawler = $client->request('GET', sprintf('/job/%s/edit', $this->getJobByPosition('F003')->getToken()));
+        $crawler = $client->request('GET', sprintf('/uk/job/%s/edit', $this->getJobByPosition('F003')->getToken()));
         $this->assertTrue(404 === $client->getResponse()->getStatusCode());
     }
 
@@ -288,7 +295,7 @@ class JobControllerTest extends WebTestCase
         $em->flush();
 
         //Go to the preview page to extend the job
-        $crawler = $client->request('GET', sprintf('/job/%s/%s/%s/%s', $job->getCompanySlug(), $job->getLocationSlug(), $job->getToken(), $job->getPositionSlug()));
+        $crawler = $client->request('GET', sprintf('/uk/job/%s/%s/%s/%s', $job->getCompanySlug(), $job->getLocationSlug(), $job->getToken(), $job->getPositionSlug()));
         $crawler = $client->getCrawler();
         $form = $crawler->selectButton('Extend')->form();
         $client->submit($form);

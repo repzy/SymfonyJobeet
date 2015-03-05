@@ -1,7 +1,7 @@
 {% extends 'EnsJobeetBundle::layout.html.twig' %}
  
 {% block title %}
-    Jobs in the {{ category.name }} category
+    {% trans with {'%category%': category.name} %}Jobs in the %category% category{% endtrans %}
 {% endblock %}
  
 {% block stylesheets %}
@@ -17,7 +17,7 @@
         <h1>{{ category.name }}</h1>
     </div>
 
-    {{ include ('EnsJobeetBundle:Job:list.html.twig', {'jobs': category.activejobs}) }}
+    {% include 'EnsJobeetBundle:Job:list.html.twig' with {'jobs': category.activejobs} %}
 
     {% if last_page > 1 %}
         <div class="pagination">
@@ -48,8 +48,9 @@
     {% endif %}
 
     <div class="pagination_desc">
-        <strong>{{ total_jobs }}</strong> jobs in this category
-
+        {% transchoice total_jobs with {'%count%': '<strong>' ~ total_jobs ~ '</strong>'} %}
+        {0} No job in this category|{1} One job in this category|]1,Inf] %count% jobs in this category
+        {% endtranschoice %}
         {% if last_page > 1 %}
             - page <strong>{{ current_page }}/{{ last_page }}</strong>
         {% endif %}

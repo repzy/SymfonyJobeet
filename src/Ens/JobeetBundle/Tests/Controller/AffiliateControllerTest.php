@@ -68,7 +68,7 @@ class AffiliateControllerTest extends WebTestCase
     public function testAffiliateForm()
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/affiliate/new');
+        $crawler = $client->request('GET', '/uk/affiliate/new');
 
         $this->assertEquals('Ens\JobeetBundle\Controller\AffiliateController:newAction', $client->getRequest()->attributes->get('_controller'));
 
@@ -88,7 +88,7 @@ class AffiliateControllerTest extends WebTestCase
         $query->setParameter('email', 'jobeet@example.com');
         $this->assertEquals(1, $query->getSingleScalarResult());
 
-        $crawler = $client->request('GET', '/affiliate/new');
+        $crawler = $client->request('GET', '/uk/affiliate/new');
         $form = $crawler->selectButton('Submit')->form(array(
             'affiliate[email]' => 'not.an.email',
         ));
@@ -104,7 +104,7 @@ class AffiliateControllerTest extends WebTestCase
     public function testCreate()
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/affiliate/new');
+        $crawler = $client->request('GET', '/uk/affiliate/new');
         $form = $crawler->selectButton('Submit')->form(array(
            'affiliate[url]' => 'http://sensio-labs.com/',
             'affiliate[email]' => 'address@example.com'
@@ -121,7 +121,7 @@ class AffiliateControllerTest extends WebTestCase
     public function testWait()
     {
         $client = static::createClient();
-        $crawler = $client->request('GET', '/affiliate/wait');
+        $crawler = $client->request('GET', '/uk/affiliate/wait');
 
         $this->assertEquals('Ens\JobeetBundle\Controller\AffiliateController:waitAction', $client->getRequest()->attributes->get('_controller'));
     }
