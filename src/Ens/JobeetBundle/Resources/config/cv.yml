@@ -3,19 +3,17 @@ Wish_position:
     Level: Junior
     Language: PHP
 
-Education:
-    University: Taras Shevchenko National University of Kyiv
-    Faculty: Faculty of Radio Physics, Electronics and Computer Systems
-    Department: Nanophysics and Nanoelectronics
-    Bachelor_training_program: Applied Physics
-    Entrance_year: 2011
-    Graduation_year: 2015
+Experience:
+    Company: Jeapie
+    Site: https://jeapie.com
+    Position: Junior developer
+    Period: 26.03.2015 - 31.05.2015
 
 Skills:
     Languages: PHP
-    Technologies: HTML, CSS, JavaScript, jQuery, MySQL(PDO), JSON,
+    Technologies: HTML, CSS, MySQL(PDO), JSON,
                   Linux, Bootstrap3, Composer, Bower, Vagrant, Twig
-    Frameworks: Laravel, Yii, Symfony2
+    Frameworks: Laravel, Yii2, Symfony2
     VCS: Git
 
 Projects:
@@ -41,6 +39,14 @@ Courses:
         Platform: BIONIC University
         Web: http://bionic-university.com/uk/
 
+Education:
+    University: Taras Shevchenko National University of Kyiv
+    Faculty: Faculty of Radio Physics, Electronics and Computer Systems
+    Department: Nanophysics and Nanoelectronics
+    Bachelor_training_program: Applied Physics
+    Entrance_year: 2011
+    Graduation_year: 2015
+
 Languages:
     Ukrainian: Native
     English: Intermediate
@@ -51,7 +57,7 @@ Contacts:
         street: Lomonosova 35
         subway: Vasylkivska
     E-mail: rrepzy@gmail.com
-    LinkedIn: http://ua.linkedin.com/pub/dima-kuzmenko/a1/285/b65/
+    LinkedIn: ua.linkedin.com/in/dimakuzmenko
     Git: https://github.com/repzy
     Skype: rrepzy
     Phone: 0992298058
