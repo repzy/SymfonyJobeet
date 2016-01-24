@@ -1,36 +1,30 @@
               Kuzmenko Dmytro
-Wish_position:
-    Level: Junior
-    Language: PHP
+Wish_position: Junior PHP
 
 Experience:
-    Company: Jeapie
-    Site: https://jeapie.com
-    Position: Junior developer
-    Period: 26.03.2015 - 31.05.2015
+  -
+      Company: Jeapie
+      Site: https://jeapie.com
+      Position: Junior developer
+      Period: 26.03.2015 - 31.05.2015
+  -
+      Company: Easyweb
+      Site: http://www.easyweb.link/
+      Pisition: Junior developer
+      Period: 15.08.2015 - 15.09.2015
 
 Skills:
-    Languages: PHP
     Technologies: HTML, CSS, MySQL(PDO), JSON,
                   Linux, Bootstrap3, Composer, Bower, Vagrant, Twig
-    Frameworks: Laravel, Yii2, Symfony2
+    Frameworks: Yii2, Symfony2
     VCS: Git
 
 Projects:
     -
-        Name: Sparrow
-        Language: PHP
-        Framework: Symfony2
         Git: https://github.com/bionic-university/sparrow
     -
-        Name: SymfonyJobeet
-        Language: PHP
-        Framework: Symfony2
         Git: https://github.com/repzy/SymfonyJobeet
     -
-        Name: Yiiomg
-        Language: PHP
-        Framework: Yii(1.1)
         Git: https://github.com/repzy/Yiiomg
 
 Courses:
@@ -45,17 +39,12 @@ Education:
     Department: Nanophysics and Nanoelectronics
     Bachelor_training_program: Applied Physics
     Entrance_year: 2011
-    Graduation_year: 2015
 
 Languages:
     Ukrainian: Native
     English: Intermediate
 
 Contacts:
-    Address:
-        city: Kiev
-        street: Lomonosova 35
-        subway: Vasylkivska
     E-mail: rrepzy@gmail.com
     LinkedIn: ua.linkedin.com/in/dimakuzmenko
     Git: https://github.com/repzy
